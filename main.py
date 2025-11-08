@@ -1,3 +1,26 @@
+import validaciones
+import datos
+
+
+def agregar_pais(lista_paises):
+    print("Ingrese los datos del nuevo país: ")
+
+    nombre = validaciones.validar_cadena_no_vacia("Nombre: ")
+    poblacion = validaciones.validar_entero_positivo("Población: ")
+    superficie = validaciones.validar_entero_positivo("Superficie (km2): ")
+    continente = validaciones.validar_cadena_no_vacia("Continente: ")
+
+    nuevo_pais = {
+        'nombre': nombre,
+        'poblacion': poblacion,
+        'superficie': superficie,
+        'continente': continente,
+    }
+
+    lista_paises.append(nuevo_pais)
+    print(f"{nombre} fué agregado")
+    
+
 def mostrar_menu():
     print("\n" + "=" * 40)
     print("--- GESTIÓN DE DATOS DE PAÍSES ---")
@@ -13,6 +36,12 @@ def mostrar_menu():
 
 
 def main():
+    lista_paises = datos.cargar_datos('paises.csv')
+
+    if not lista_paises:
+        print("No se pudieron cargar datos. Se iniciará con una lista vacía")
+        lista_paises = []
+
     while True:
         mostrar_menu()
         opcion = input("Seleccione una opción: ")
@@ -20,6 +49,7 @@ def main():
         match opcion:
             case "1":
                 print("\n== 1. Agregar un país ==")
+                agregar_pais(lista_paises)
             case "2":
                 print("\n== 2. Actualizar datos de un país ==")
             case "3":
@@ -32,6 +62,8 @@ def main():
                 print("\n== 6. Mostrar estadísticas==")
             case "7":
                 print("\n== 7. Salir (y guardar datos) ==")
+                datos.guardar_datos(lista_paises, 'paises.csv')
+                print("Chau")
                 break
             case _:
                 print("Error: Ingrese un número de 1-7")
