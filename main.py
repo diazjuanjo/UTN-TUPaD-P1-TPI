@@ -19,7 +19,35 @@ def agregar_pais(lista_paises):
 
     lista_paises.append(nuevo_pais)
     print(f"{nombre} fué agregado")
+
+def actualizar_pais(lista_paises):
+    if not lista_paises:
+        print("No hay países en la lista para actualizar")
+        return
     
+    nombre_a_buscar = validaciones.validar_cadena_no_vacia("Ingrese el nombre del país que quiere actualizar: ")
+
+    pais_encontrado = None
+
+    for pais in lista_paises:
+        if pais['nombre'].lower() == nombre_a_buscar.lower():
+            pais_encontrado = pais
+            break
+
+    if pais_encontrado:
+        print(f"País encontrado: {pais_encontrado['nombre']}")
+        print(f"Población actual: {pais_encontrado['poblacion']}")
+        print(f"Superficie actual: {pais_encontrado['superficie']} km2")
+
+        nueva_poblacion = validaciones.validar_entero_positivo("Ingrese la nueva población: ")
+        nueva_superficie = validaciones.validar_entero_positivo("Ingrese la nueva superficie (km2): ")
+
+        pais_encontrado['poblacion'] = nueva_poblacion
+        pais_encontrado['superficie'] = nueva_superficie
+
+        print(f"Datos de '{pais_encontrado['nombre']}' actualizados")
+    else:
+        print(f"Error: No se encontró '{nombre_a_buscar}'")
 
 def mostrar_menu():
     print("\n" + "=" * 40)
@@ -52,6 +80,7 @@ def main():
                 agregar_pais(lista_paises)
             case "2":
                 print("\n== 2. Actualizar datos de un país ==")
+                actualizar_pais(lista_paises)
             case "3":
                 print("\n== 3. Buscar un país por nombre ==")
             case "4":
