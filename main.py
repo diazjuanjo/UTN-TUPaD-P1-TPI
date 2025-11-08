@@ -1,6 +1,6 @@
 import validaciones
 import datos
-
+import busquedas
 
 def agregar_pais(lista_paises):
     print("Ingrese los datos del nuevo país: ")
@@ -83,6 +83,7 @@ def main():
                 actualizar_pais(lista_paises)
             case "3":
                 print("\n== 3. Buscar un país por nombre ==")
+                busquedas.buscar_pais(lista_paises)
             case "4":
                 print("\n== 4. Filtrar países ==")
             case "5":
