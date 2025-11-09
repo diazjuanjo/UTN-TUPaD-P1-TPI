@@ -2,6 +2,7 @@ import validaciones
 import datos
 import busquedas
 import filtros
+import ordenamiento
 
 def agregar_pais(lista_paises):
     print("Ingrese los datos del nuevo país: ")
@@ -90,6 +91,7 @@ def main():
                 filtros.filtrar_paises(lista_paises)
             case "5":
                 print("\n== 5. Ordenar países ==")
+                ordenamiento.ordenar_paises(lista_paises)
             case "6":
                 print("\n== 6. Mostrar estadísticas==")
             case "7":
