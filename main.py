@@ -3,6 +3,7 @@ import datos
 import busquedas
 import filtros
 import ordenamiento
+import estadisticas
 
 def agregar_pais(lista_paises):
     print("Ingrese los datos del nuevo país: ")
@@ -94,6 +95,7 @@ def main():
                 ordenamiento.ordenar_paises(lista_paises)
             case "6":
                 print("\n== 6. Mostrar estadísticas==")
+                estadisticas.mostrar_estadisticas(lista_paises)
             case "7":
                 print("\n== 7. Salir (y guardar datos) ==")
                 datos.guardar_datos(lista_paises, 'paises.csv')
